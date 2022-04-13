@@ -19,7 +19,7 @@ const UserSchema = new Schema({
             ref: 'Chore'
         }
     ],
-}
+},
 {
     toJSON: {
         virtuals: true
