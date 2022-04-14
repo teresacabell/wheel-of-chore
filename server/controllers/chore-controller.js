@@ -17,7 +17,18 @@ const choreController = {
     },
 
     getChoreById({ params }, res) {
-        
+        Chore.findOne({ _id: params.id })
+        .populate({ 
+            path: 'user',
+            select: '-__v'
+        })
+        .select('-__v')
+        .sort({ _id: -1 })
+        .then(dbChoreData => res.json(dbChoreData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err)
+        })
     },
 
     createChore({ params, body }, res) {
