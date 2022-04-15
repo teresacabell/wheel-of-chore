@@ -9,7 +9,7 @@ app.use(express.static("public"));
 
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/socialmedia', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/chore-tracker', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
