@@ -32,15 +32,48 @@ const choreController = {
     },
 
     createChore({ params, body }, res) {
-
+        Chore.create(body)
+            .then(({ _id}) => {
+                return User.findOneAndUpdate(
+                    { username: body.username },
+                    { $push: { thoughts: _id } },
+                    { new: true }
+                );
+            })
+            .then(dbUserData => {
+                if (!dbUserData) {
+                    res.status(404).json({ message: 'No user found with this username!'});
+                    return;
+                }
+                res.json(dbUserData); 
+            })
+            .catch(err => res.json(err));
     },
 
     updateChore({ params, body }, res) {
-
+        Chore.findOneAndUpdate(
+            { _id: params.id },
+            body, 
+            { new: true, runValidators: true }
+        )
+        .then(updatedChore => {
+            if (!updatedChore) {
+                return res.status(404).json({ message: 'No chore with this ID!' });
+            }
+        res.json(updatedThought);
+        })
+        .catch(err => res.json(err));
     },
 
     deleteChore({ params, body}, res) {
-
+        Chore.findOneAndDelete({ _id: params.id })
+        .then(deletedChore => {
+            if (!deletedChore) {
+                return res.status(404).json({ message: 'No chore with this ID!' });
+            }
+            res.json(deletedChore);
+        })
+        .catch(err => res.json(err));
     }
 };
 
