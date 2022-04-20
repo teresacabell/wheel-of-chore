@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+<<<<<<< HEAD
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 
@@ -28,4 +29,11 @@ module.exports = {
         
         return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },
+=======
+const secret = 'mysecretsshhhhhh';
+const expiration = '2h';
+
+module.exports = {
+
+>>>>>>> develop
 };
