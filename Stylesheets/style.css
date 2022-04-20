@@ -44,4 +44,12 @@
       filter: blur(0px);
     }
   }
+
+  .btn {
+    background-color: rgb(8, 143, 143);
+    border-radius: 10px;
+    color: aliceblue;
+    width: 170px;
+    height: 30px;
+  }
   
