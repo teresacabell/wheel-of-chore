@@ -1,76 +1,33 @@
-import React, { Component, PropTypes } from 'react';
+import React from "react";
+import {Link} from "react-router-dom";
 
+const SignUp = () =>  {
+     
+        return (
+            <form>
+                <h3>Sign Up</h3>
 
-class SignUpForm extends Component {
-  static propTypes = {
-    signUp: PropTypes.func.isRequired
-  };
+                <div className="form-group">
+                    <label>User Name</label>
+                    <input type="text" className="form-control" placeholder="First name" />
+                </div>
 
-  constructor(props, context) {
-    super(props, context);
+                <div className="form-group">
+                    <label>Email address</label>
+                    <input type="email" className="form-control" placeholder="Enter email" />
+                </div>
 
-    this.state = {newUser : {}};
-    this.onSubmit = this.onSubmit;
-  }
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" className="form-control" placeholder="Enter password" />
+                </div>
 
-  clearInput() {
-    this.setState({user : {}});
-  }
-
-  handleChange(propertyName, event) {
-      const newUser = this.state.newUser;
-      newUser[propertyName] = event.target.value;
-      this.setState({newUser: newUser });
-  }
-
-  onSubmit(event) {
-    event.preventDefault();
-    const login = this.state.newUser.email.trim();
-    const password = this.state.newUser.password.trim();
-    const passwordConfirmation = this.state.newUser.passwordConfirmation.trim();
-    if (password.length && password === passwordConfirmation) 
-      this.props.signUp(login, password);
-  }
-
-  render() {
-    return (
-      <div id="login">
-        <form className="login-form" onSubmit={this.onSubmit}>
-          <span className="fa fa-user"></span>
-          <input
-            autoFocus
-            maxLength="25"
-            onChange={this.handleChange.bind(this, 'email')}
-            placeholder="Email"
-            type="email"
-            value={this.state.newUser.email}
-            required
-          />
-          <span className="fa fa-lock"></span>
-          <input
-            autoComplete="off"
-            maxLength="8"
-            onChange={this.handleChange.bind(this, 'password')}
-            placeholder="Password"
-            type="password"
-            value={this.state.newUser.password}
-            required
-          />
-          <span className="fa fa-lock"></span>
-          <input
-            autoComplete="off"
-            maxLength="8"
-            onChange={this.handleChange.bind(this, 'passwordConfirmation')}
-            placeholder="Confirm your Password"
-            type="password"
-            value={this.state.newUser.passwordConfirmation}
-            required
-          />
-          <input type="submit" value="Sign Up"/>
-        </form>
-      </div>
-    );
-  }
-}
-
-export default SignUpForm;
+                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <Link to={"/login"} > Already Have Account?</Link>     
+                <p className="forgot-password text-right">
+                    Already registered <a href="#">sign in?</a>
+                </p>
+            </form>
+        );
+    }
+ export default SignUp;
