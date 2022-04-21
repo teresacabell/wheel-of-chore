@@ -1,3 +1,10 @@
+var choreIdCounter = 0;
+
+var formEl = document.querySelector("#chore-form");
+var pageContentEl = document.querySelector("#page-content");
+
+var chores = [];
+
 (function() {
     const wheel = document.querySelector('.wheel');
     const startButton = document.querySelector('.button');
@@ -29,12 +36,6 @@
     });
   })();
   
-var choreIdCounter = 0;
-
-var formEl = document.querySelector("#chore-form");
-var pageContentEl = document.querySelector("#page-content");
-
-var chores = [];
 
 var choreFormHandler = function (event) {
     event.preventDefault();
