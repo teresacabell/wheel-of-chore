@@ -1,5 +1,7 @@
 # wheel-of-chore
 
+![Main-page](./readmeimg/Capture.png)
+
 ## Description
 AS A USER who wants to organize chores for the household
 I WANT a site that will provide tools to help me 
